@@ -104,9 +104,9 @@ const TodoPage = () => {
         </a>
         <a href="/todo">Todo-section</a>
       </Breadcrumbs>
-      <div className="flex justify-center  h-auto">
-        <Card className="w-full ">
-          <CardBody>
+      <div className="flex justify-center  h-auto w-auto">
+        {/* <Card className="w-full "> */}
+          <CardBody >
             <h1 className="font-poppins font-bold text-center text-2xl mb-4">
               Todo List
             </h1>
@@ -210,7 +210,7 @@ const TodoPage = () => {
               Show All Todo
             </Button>
           </CardBody>
-        </Card>
+        {/* </Card> */}
       </div>
     </>
   );

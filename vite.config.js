@@ -10,3 +10,6 @@ export default defineConfig({
     },
   },
 });
+
+//https://portfolio-backend-z9pa.onrender.com
+//http://localhost:8000
