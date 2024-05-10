@@ -159,7 +159,7 @@ const TodoPage = () => {
               </div>
             </form>
             {isRecentTodoLoading ? (
-              <div className="flex justify-center items-center w-full h-full">
+              <div className=" flex justify-center items-center">
                 <Loader />
               </div>
             ) : (
