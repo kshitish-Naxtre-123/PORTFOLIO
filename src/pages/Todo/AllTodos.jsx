@@ -17,7 +17,6 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { Button, DatePicker, Input, Modal } from "antd";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import 'sweetalert2/src/sweetalert2/scss'
 const { TextArea } = Input;
 
 const AllTodos = () => {
@@ -55,33 +54,31 @@ const AllTodos = () => {
   };
 
   const handleDeleteTodo = async (id) => {
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then(async (result) => {
-        if (result.isConfirmed) {
-          try {
-            await deleteTodo(id);
-            toast.success("Todo deleted successfully");
-            refetch();
-          } catch (error) {
-            toast.error("Failed to delete Todo!");
-          }
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire({
-            title: "Cancelled",
-            text: "Your imaginary file is safe :)",
-            icon: "error",
-          });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteTodo(id);
+          toast.success("Todo deleted successfully");
+          refetch();
+        } catch (error) {
+          toast.error("Failed to delete Todo!");
         }
-      });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: "Cancelled",
+          text: "Your imaginary file is safe :)",
+          icon: "error",
+        });
+      }
+    });
   };
   return (
     <div className=" flex flex-col justify-center items-center h-full gap-0.5 p-4">
