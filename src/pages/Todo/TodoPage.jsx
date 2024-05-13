@@ -12,6 +12,7 @@ import { useNavigate } from "react-router";
 import moment from "moment";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
+import Loader from "../../components/Loader";
 
 const { TextArea } = Input;
 
@@ -157,43 +158,51 @@ const TodoPage = () => {
                 </Button>
               </div>
             </form>
-
-            {recentTodos?.map((todo) => (
-              <div
-                key={todo._id}
-                className=" font-poppins font-semibold border border-gray-400 p-5  text-left rounded-md shadow-md mt-5 mb-4"
-              >
-                <ul>
-                  <li className=" flex flex-col">
-                    <h2 className=" font-bold text-[#22c55e] text-[22px] border border-gray-400 rounded-lg pt-2 pb-2 pl-2  bg-[#dcfce7] border-transparent">
-                      {todo.title}
-                    </h2>
-                    <p className=" mt-2 mb-2 pl-2 ">{todo.desc}</p>{" "}
-                    <div className=" mt-2 mb-0 flex  justify-between">
-                      <p className=" text-sm font-normal ">
-                        {" "}
-                        <span className=" font-extrabold text-black text-[14px] pl-2">
-                          Due Date:
-                        </span>{" "}
-                        {moment(todo.dueDate).format("Do MMMM YYYY")}
-                      </p>
-                      <div className=" flex flex-row gap-3">
-                        <MdEdit
-                          size={24}
-                          color="blue"
-                          onClick={() => handleEdit(todo)}
-                        />
-                        <MdDelete
-                          size={24}
-                          color="red"
-                          onClick={() => handleDelete(todo._id)}
-                        />
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+            {isRecentTodoLoading ? (
+              <div className=" flex justify-center items-center">
+                <Loader />
               </div>
-            ))}
+            ) : (
+              <>
+                {recentTodos?.map((todo) => (
+                  <div
+                    key={todo._id}
+                    className=" font-poppins font-semibold border border-gray-400 p-5  text-left rounded-md shadow-md mt-5 mb-4"
+                  >
+                    <ul>
+                      <li className=" flex flex-col">
+                        <h2 className=" font-bold text-[#22c55e] text-[22px] border border-gray-400 rounded-lg pt-2 pb-2 pl-2  bg-[#dcfce7] border-transparent">
+                          {todo.title}
+                        </h2>
+                        <p className=" mt-2 mb-2 pl-2 ">{todo.desc}</p>{" "}
+                        <div className=" mt-2 mb-0 flex  justify-between">
+                          <p className=" text-sm font-normal ">
+                            {" "}
+                            <span className=" font-extrabold text-black text-[14px] pl-2">
+                              Due Date:
+                            </span>{" "}
+                            {moment(todo.dueDate).format("Do MMMM YYYY")}
+                          </p>
+                          <div className=" flex flex-row gap-3">
+                            <MdEdit
+                              size={24}
+                              color="blue"
+                              onClick={() => handleEdit(todo)}
+                            />
+                            <MdDelete
+                              size={24}
+                              color="red"
+                              onClick={() => handleDelete(todo._id)}
+                            />
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                ))}
+              </>
+            )}
+
             <Button
               onClick={() => navigate("/show-all-todos")}
               className=" text-[20px] mt-12 font-poppins "
