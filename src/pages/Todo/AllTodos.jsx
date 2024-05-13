@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
+import html2pdf from "html2pdf.js";
+
 import {
   Card,
   CardHeader,
@@ -17,6 +19,8 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { Button, DatePicker, Input, Modal } from "antd";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { FaFilePdf } from "react-icons/fa";
+
 const { TextArea } = Input;
 
 const AllTodos = () => {
@@ -80,6 +84,24 @@ const AllTodos = () => {
       }
     });
   };
+
+  const handleDownloadPdf = (todo) => {
+    // Get the content of the todo card without icons
+    const content = document.getElementById("todoCard").innerHTML;
+    
+    // Remove icons from the content
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
+    const icons = tempDiv.querySelectorAll("svg");
+    icons.forEach(icon => icon.remove());
+  
+    // Convert and save as PDF
+    const filename = `${todo.title}.pdf`;
+    html2pdf().from(tempDiv).save(filename);
+  };
+  
+  
+
   return (
     <div className=" flex flex-col justify-center items-center h-full gap-0.5 p-4">
       {todos?.map((todo) => (
@@ -88,6 +110,7 @@ const AllTodos = () => {
           color="transparent"
           shadow={true}
           className="w-full xl:max-w-[40%] border border-gray-300 sm:max-w-[85%] mt-2 mb-2 shadow-lg"
+          id="todoCard"
         >
           <CardHeader
             color="transparent"
@@ -122,6 +145,12 @@ const AllTodos = () => {
                   {moment(todo.dueDate).format("Do MMMM YYYY")}
                 </p>
                 <div className=" flex justify-center items-center gap-2 mr-4">
+                  <FaFilePdf
+                    size={24}
+                    color=" red"
+                    onClick={() => handleDownloadPdf(todo)}
+                    style={{ cursor: "pointer" }}
+                  />
                   <MdEdit
                     size={24}
                     color="blue"

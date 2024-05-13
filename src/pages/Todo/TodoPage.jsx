@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Card, CardBody, Button } from "@material-tailwind/react";
 import { Input, DatePicker } from "antd";
 import {
@@ -24,7 +24,7 @@ const TodoPage = () => {
   const [btnColor, setBtnColor] = useState("indigo");
   const [editingTodoId, setEditingTodoId] = useState(null);
   const navigate = useNavigate();
-
+  const formRef = useRef(null);
   const [createTodo, { isLoading }] = useCreateTodoMutation();
   const {
     data: recentTodos,
@@ -81,6 +81,13 @@ const TodoPage = () => {
     setTodoDesc(todo.desc);
     setTodoDate(moment(todo.dueDate));
     setEditingTodoId(todo._id);
+    scrollToForm();
+  };
+
+  const scrollToForm = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   const handleDelete = async (id) => {
@@ -95,12 +102,13 @@ const TodoPage = () => {
   return (
     <>
       <div className="flex justify-center  h-auto ">
-        <Card className="w-full ">
+        <Card className="xl:w-[50%] sm:w-[90%] w-[100%] xl:m-auto sm:m-0 ">
           <CardBody>
             <h1 className="font-poppins font-bold text-center text-2xl mb-4">
               Todo List
             </h1>
             <form
+              ref={formRef}
               onSubmit={submitHandler}
               className=" border border-gray-400 p-4 rounded-xl shadow-xl"
             >
