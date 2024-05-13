@@ -17,7 +17,6 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { Button, DatePicker, Input, Modal } from "antd";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import 'sweetalert2/src/sweetalert2/scss'
 const { TextArea } = Input;
 
 const AllTodos = () => {
