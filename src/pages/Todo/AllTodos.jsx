@@ -131,9 +131,9 @@ const AllTodos = () => {
           </CardHeader>
           <CardBody className="mb-6 p-0">
             <Typography>
-              <p className=" font-poppins text-[16px] font-normal text-blue-600 p-2">
+              <pre className=" font-poppins text-[16px] font-normal text-blue-600 p-2">
                 {todo.desc}
-              </p>
+              </pre>
             </Typography>
             <Typography>
               <div className=" flex justify-between">

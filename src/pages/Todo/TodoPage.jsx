@@ -182,7 +182,7 @@ const TodoPage = () => {
                         <h2 className=" font-bold text-[#22c55e] text-[22px] border border-gray-400 rounded-lg pt-2 pb-2 pl-2  bg-[#dcfce7] border-transparent">
                           {todo.title}
                         </h2>
-                        <p className=" mt-2 mb-2 pl-2 ">{todo.desc}</p>{" "}
+                        <pre className=" mt-2 mb-2 pl-2 font-poppins ">{todo.desc}</pre>{" "}
                         <div className=" mt-2 mb-0 flex  justify-between">
                           <p className=" text-sm font-normal ">
                             {" "}
