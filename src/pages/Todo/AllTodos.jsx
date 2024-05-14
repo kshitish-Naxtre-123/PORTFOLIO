@@ -131,7 +131,7 @@ const AllTodos = () => {
           </CardHeader>
           <CardBody className="mb-6 p-0">
             <Typography>
-              <p className=" font-poppins text-[16px] font-normal text-blue-600 p-4">
+              <p className=" font-poppins text-[16px] font-normal text-blue-600 p-2">
                 {todo.desc}
               </p>
             </Typography>

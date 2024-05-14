@@ -175,7 +175,7 @@ const TodoPage = () => {
                 {recentTodos?.map((todo) => (
                   <div
                     key={todo._id}
-                    className=" font-poppins font-semibold border border-gray-400 p-5  text-left rounded-md shadow-md mt-5 mb-4"
+                    className=" font-poppins font-semibold border border-gray-400 p-2  text-left rounded-md shadow-md mt-5 mb-4"
                   >
                     <ul>
                       <li className=" flex flex-col">
