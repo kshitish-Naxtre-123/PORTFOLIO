@@ -107,6 +107,10 @@ const navListMenuItems = [
     title: "TODO",
     link: "/todo",
   },
+  {
+    title: "Count-text ",
+    link: "/count-text",
+  },
 ];
 
 function NavListMenu() {
@@ -139,14 +143,14 @@ function NavListMenu() {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[12rem] grid-cols-7 gap-3 overflow-visible lg:grid">
+        <MenuList className="hidden w-[15rem] grid-col-2 gap-0 overflow-visible lg:grid">
           <Card
             color="white"
             shadow={false}
             variant="gradient"
             className="col-span-3 grid h-full w-full place-items-center rounded-md"
           ></Card>
-          <ul className="col-span-4 flex w-full flex-col gap-1">
+          <ul className="col-span-1 flex w-full flex-col ">
             {renderItems}
           </ul>
         </MenuList>

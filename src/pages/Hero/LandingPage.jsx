@@ -1,9 +1,11 @@
 import React from "react";
 import Hero from "../../assets/kshitish.jpg";
+import { FaArrowRight } from "react-icons/fa6";
+
 const LandingPage = () => {
   return (
     <>
-      <div className=" w-full bg-black">
+      <div className=" w-full bg-black p-1 rounded-md">
         <div className=" mx-auto max-w-screen-xl h-auto mt-6 p-4 flex xl:flex-row lg:flex-row sm:flex-col flex-col xl:justify-between lg:justify-between justify-center items-center ">
           <div className=" xl:max-w-[50%] lg:max-w-[50%] sm:w-full  w-full flex flex-col justify-center">
             <h1 className=" font-extrabold text-[44px] text-white mb-2 font-poppins">
@@ -15,8 +17,8 @@ const LandingPage = () => {
               Node.js, with expertise in creating dynamic and responsive user
               interfaces. Passionate about problem-solving and clean code.{" "}
             </p>
-            <button className=" text-[16px]  bg-blue-400 rounded-lg w-fit mt-2 px-4 py-3 text-white font-bold font-poppins">
-              Let's get Started
+            <button className=" text-[16px]  bg-blue-400 rounded-lg w-fit mt-2 px-4 py-3 text-white font-bold font-poppins flex justify-center items-center gap-2">
+              Let's get Started <FaArrowRight />
             </button>
           </div>
           <div>

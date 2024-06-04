@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/": "https://portfolio-backend-z9pa.onrender.com",
+      "/api/": "http://localhost:8000",
     },
   },
 });

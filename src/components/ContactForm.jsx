@@ -98,7 +98,10 @@ const ContactForm = () => {
                 <Select
                   className="font-poppins text-[14px] shadow-md xl:w-[60%] w-[100%] lg:w-[60%] h-[44px] mt-[10px]"
                   // style={{ width: "60%", height: "44px", marginTop: "10px" }}
-                  value={contactData.gender}
+                  showSearch
+                  optionFilterProp="children"
+                  placeholder="Select gender"
+                  value={contactData.gender || undefined}
                   onChange={(value) =>
                     handleInputChange({ target: { name: "gender", value } })
                   }

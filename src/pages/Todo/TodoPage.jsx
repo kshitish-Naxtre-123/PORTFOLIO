@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Card, CardBody, Button } from "@material-tailwind/react";
 import { Input, DatePicker } from "antd";
+import dayjs from 'dayjs';
 import {
   useCreateTodoMutation,
   useRecentTodosQuery,
@@ -75,11 +76,12 @@ const TodoPage = () => {
   };
 
   const handleEdit = (todo) => {
+    console.log(todo.dueDate)
     setBtnText("Update Todo");
     setBtnColor("green");
     setTodoInput(todo.title);
     setTodoDesc(todo.desc);
-    setTodoDate(moment(todo.dueDate));
+    setTodoDate(dayjs(todo.dueDate));
     setEditingTodoId(todo._id);
     scrollToForm();
   };
@@ -147,8 +149,8 @@ const TodoPage = () => {
                   placeholder="Select date"
                   style={{ marginTop: "10px", width: "50%" }}
                   size="large"
-                  value={todoDate}
-                  onChange={(date) => setTodoDate(date)}
+                  value={todoDate ? todoDate : null}
+                  onChange={(date) => {console.log(date); setTodoDate(date)}}
                   className="shadow-md"
                 />
               </div>
@@ -172,6 +174,7 @@ const TodoPage = () => {
               </div>
             ) : (
               <>
+              {console.log(recentTodos)}
                 {recentTodos?.map((todo) => (
                   <div
                     key={todo._id}
@@ -182,7 +185,7 @@ const TodoPage = () => {
                         <h2 className=" font-bold text-[#22c55e] text-[22px] border border-gray-400 rounded-lg pt-2 pb-2 pl-2  bg-[#dcfce7] border-transparent">
                           {todo.title}
                         </h2>
-                        <pre className=" mt-2 mb-2 pl-2 font-poppins ">{todo.desc}</pre>{" "}
+                        <pre className=" mt-2 mb-2 pl-2 font-poppins">{todo.desc}</pre>{" "}
                         <div className=" mt-2 mb-0 flex  justify-between">
                           <p className=" text-sm font-normal ">
                             {" "}

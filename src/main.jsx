@@ -10,13 +10,15 @@ import Home from "./pages/Home.jsx";
 import { ThemeProvider } from "@material-tailwind/react";
 import TodoPage from "./pages/Todo/TodoPage.jsx";
 import AllTodos from "./pages/Todo/AllTodos.jsx";
+import CountText from "./pages/Text/CountText.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<Home />} />
       <Route path="/todo" element={<TodoPage />} />
-      <Route path="/show-all-todos" element={<AllTodos/>}/>
+      <Route path="/show-all-todos" element={<AllTodos />} />
+      <Route path="/count-text" element={<CountText />} />
     </Route>
   )
 );
