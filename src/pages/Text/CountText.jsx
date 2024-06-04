@@ -33,28 +33,28 @@ const CountText = () => {
       </div>
       <div className=" flex gap-2 w-[100%] justify-between">
         <button
-          className=" btn btn-info text-white font-semibold w-fit pt-3 pb-3 pl-4 pr-4"
+       className=" text-[14px] btn btn-info text-white font-semibold w-[180px] pt-3 pb-3 pl-1 pr-1"
           onClick={countWord}
         >
           {" "}
           Count No Of Word
         </button>
         <div className=" flex flex-row gap-2 items-center">
-          <span className="">Total Words:</span>
-          <Input className=" w-[60%] h-[100%]" value={wordCount} />
+          <span className=" text-[14px]">Total Words:</span>
+          <Input className=" w-[50%] h-[100%]" value={wordCount} />
         </div>
       </div>
       <div className=" flex gap-2 w-[100%] justify-between">
         <button
-          className=" btn btn-info text-white font-semibold w-fit pt-3 pb-3 pl-4 pr-4"
+          className=" text-[14px] btn btn-info text-white font-semibold w-[180px] pt-3 pb-3 pl-1 pr-1"
           onClick={countLetter}
         >
           {" "}
           Count No Of Letter
         </button>
         <div className=" flex flex-row gap-2 items-center">
-          <span className="">Total Letters:</span>
-          <Input className=" w-[60%] h-[100%]" value={letterCount} />
+          <span className=" text-[14px]">Total Letters:</span>
+          <Input className=" w-[50%] h-[100%]" value={letterCount} />
         </div>
       </div>
     </div>
